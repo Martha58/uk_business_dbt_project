@@ -30,7 +30,7 @@ def extract_data_api():
             print("Error:", response.status_code)
 
     try:
-        connection = "mongodb+srv://local_business_user:local_business@cluster0.0j2dc.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
+        connection = "mongodb+srv://local_business_user:password@cluster0.0j2dc.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
         client = pymongo.MongoClient(connection, tlscaFile=certifi.where()) 
         print("Connected to MongoDB")
     except Exception as e:
@@ -44,7 +44,7 @@ def extract_data_api():
     insert_data = collection.insert_many(data)
     print(f"Data inserted successfully {insert_data}")
     return data
-extract_data()
+extract_data_api()
 
 
 
