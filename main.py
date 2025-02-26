@@ -49,7 +49,7 @@ extract_data_api()
 
 def extract_data_from_nosql_database():
     try:
-        connection = "mongodb+srv://local_business_user:local_business@cluster0.0j2dc.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
+        connection = "mongodb+srv://local_business_user:password@cluster0.0j2dc.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
         client = pymongo.MongoClient(connection, tlscaFile=certifi.where()) 
         print("Connected to MongoDB")
     except Exception as e:
