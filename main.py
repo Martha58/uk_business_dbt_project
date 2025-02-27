@@ -49,7 +49,7 @@ extract_data_api()
 
 def extract_data_from_nosql_database():
     try:
-        connection = "mongodb+srv://local_business_user:password@cluster0.0j2dc.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
+        connection = "mongodb+srv://local_business_user:local_business@cluster0.0j2dc.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
         client = pymongo.MongoClient(connection, tlscaFile=certifi.where()) 
         print("Connected to MongoDB")
     except Exception as e:
@@ -75,8 +75,19 @@ def extract_data_from_nosql_database():
                     'description': data.get('description', None),
                     'types': data.get('types', [])
                 })
+                # data = [tuple(extracted_data[i].values()) for i in range(len(extracted_data))]
     print(f"Extracted data {len(extracted_data)}")
     return extracted_data
-extract_data_from_nosql_database()
+extract_data = extract_data_from_nosql_database()
 
-    
+def load_data_to_duck_db(extract_data):
+    # Convert json data to tuple
+    data = [tuple(extract_data[i].values()) for i in range(len(extract_data))]
+
+    conn = duckdb.connect('local_business.db')
+    conn.sql('CREATE TABLE IF NOT EXISTS local_business (name VARCHAR, address VARCHAR, city VARCHAR, phone_number VARCHAR, review_count INT, rating FLOAT, website VARCHAR, description VARCHAR, types VARCHAR)')
+    conn.executemany('''INSERT INTO local_business VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)''', data)
+    conn.commit()
+    conn.close()
+    print("Data loaded to DuckDB successfully...")
+load_data_to_duck_db(extract_data)
