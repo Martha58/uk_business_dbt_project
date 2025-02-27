@@ -84,7 +84,7 @@ def load_data_to_duck_db(extract_data):
     # Convert json data to tuple
     data = [tuple(extract_data[i].values()) for i in range(len(extract_data))]
 
-    conn = duckdb.connect('local_business.db')
+    conn = duckdb.connect('local_business_db.duckdb')
     conn.sql('CREATE TABLE IF NOT EXISTS local_business (name VARCHAR, address VARCHAR, city VARCHAR, phone_number VARCHAR, review_count INT, rating FLOAT, website VARCHAR, description VARCHAR, types VARCHAR)')
     conn.executemany('''INSERT INTO local_business VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)''', data)
     conn.commit()

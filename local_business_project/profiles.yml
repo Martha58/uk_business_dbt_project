@@ -1,0 +1,6 @@
+local_business_project:
+  outputs:
+    dev:
+      type: duckdb
+      path: '/home/martha/local_business_project/database/local_business_db.duckdb'
+  target: dev
