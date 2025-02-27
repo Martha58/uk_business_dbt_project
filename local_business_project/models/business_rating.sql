@@ -3,7 +3,7 @@ WITH bad_rating AS (
     name, 
     city,
     rating, 
-    types
+    business
     FROM main.local_business
     WHERE rating <= 3
     ORDER BY rating DESC
@@ -14,7 +14,7 @@ good_rating AS (
     name, 
     city,
     rating, 
-    types
+    business
     FROM main.local_business
     WHERE rating >= 3.1
     ORDER BY rating DESC
