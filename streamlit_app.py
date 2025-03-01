@@ -5,7 +5,7 @@ conn = duckdb.connect('database/local_business_db.duckdb')
 
 st.title('DBT PROJECT')
 st.header('This is a simple webapp used to display details from my dbt project')
-st.write("This project is an ELT data project where I used request to pull data from an API, loaded the raw data into mongodb, extracted relevant data needed for analysis and saved to duckdb. Finally, used DBT for the transformation. You can view some of the major transforation carried out using the select box and text input.")
+st.write("This project is an ELT data project where I used request to pull data from an API, loaded the raw data into mongodb, extracted relevant data needed for analysis and saved to duckdb. Finally, used DBT for the transformation. You can view some of the major transformations carried out using the select box and text input.")
 st.write("The API contains data about business/services(plumber, mechanic, hairdresser, carpenter, barber, etc on google available in the UK")
 option = st.selectbox("Common search", ["Services available", "Location", "Vendors rating"])
 
