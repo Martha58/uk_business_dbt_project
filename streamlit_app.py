@@ -3,14 +3,14 @@ import duckdb
 
 conn = duckdb.connect('database/local_business_db.duckdb')
 
-st.title('BUSINESSES IN UNITED KINGDOM')
-st.header('Get fast access to differnt services in the UK')
-st.write("Looking for an easy way to get basic services like Barber, Plumber, Machanic, e.t.c? We've got you covered, all you need to do is search for what you want, and get recommendations")
-
-option = st.selectbox("Common search", ["Services available", "Location we cover", "Vendors rating"])
+st.title('DBT PROJECT')
+st.header('This is a simple webapp used to display details from my dbt project')
+st.write("This project is an ELT data project where I used request to pull data from an API, loaded the raw data into mongodb, extracted relevant data needed for analysis and saved to duckdb. Finally, used DBT for the transformation. You can view some of the major transforation carried out using the select box and text input.")
+st.write("The API contains data about business/services(plumber, mechanic, hairdresser, carpenter, barber, etc on google available in the UK")
+option = st.selectbox("Common search", ["Services available", "Location", "Vendors rating"])
 
 if option:
-    if option == "Location we cover":
+    if option == "Location":
         query = "SELECT * FROM unique_cities"
     elif option == "Services available":
         query = "SELECT * FROM unique_business"
@@ -21,13 +21,13 @@ if option:
 
     st.subheader(f"Result for {option}")
 
-    if option == "Location we cover":
+    if option == "Location":
         location = ", ".join([str(city) if city is not None else "" for city in result['city'].tolist()])
         st.write("We cover these locations:")
         st.write(f"{location}")
     elif option == "Services available":
         services = ", ".join(result['business'].tolist())
-        st.write("We currently provide information on these services:")
+        st.write("These are the services available:")
         st.write(f"{services}")
     elif option == "Vendors rating":
         for index, row in result.iterrows():
