@@ -5,7 +5,7 @@ conn = duckdb.connect('database/local_business_db.duckdb')
 
 st.title('BUSINESSES IN UNITED KINGDOM')
 st.header('Get fast access to differnt services in the UK')
-st.write("Looking for an easy way to get basic services like Barber, Plumber, Machanic, e.t.c? We've got you covered, all you need to do is search for the what you want, and get recommendation")
+st.write("Looking for an easy way to get basic services like Barber, Plumber, Machanic, e.t.c? We've got you covered, all you need to do is search for what you want, and get recommendations")
 
 option = st.selectbox("Common search", ["Services available", "Location we cover", "Vendors rating"])
 
