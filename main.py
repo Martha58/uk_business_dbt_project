@@ -65,11 +65,11 @@ extract_data_api()
 def extract_data_nosql_database():
     try:
         connection=os.getenv("LOCAL_BUSINESS_URI")
-        client = pymongo.MongoClient(connection, tlsCAFile=certifi.where())  # Fixing tlsCAFile typo
+        client = pymongo.MongoClient(connection, tlsCAFile=certifi.where())
         print("Connected to MongoDB")
     except Exception as e:
         print(f"Error: {e}")
-        return []  # Return an empty list if connection fails
+        return [] 
 
     # Extract specific data from the collection
     db = client['local_business_db']
@@ -81,7 +81,6 @@ def extract_data_nosql_database():
         query = doc.get("query", None)
         businesses = doc.get("response", {}).get("data", [])
 
-        # Ensure businesses is a list before iterating
         if isinstance(businesses, list):
             for data in businesses:
                 extracted_data.append({
