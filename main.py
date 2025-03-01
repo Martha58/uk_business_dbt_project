@@ -44,7 +44,7 @@ def extract_data_api():
             print(f"Error fetching data for {q}: {response.status_code}")
 
     try:
-        connection = "mongodb+srv://local_business_user:local_business@cluster0.0j2dc.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
+        connection=os.getenv("LOCAL_BUSINESS_URI")
         client = pymongo.MongoClient(connection, tlsCAFile=certifi.where())
         print("Connected to MongoDB")
     except Exception as e:
@@ -67,7 +67,7 @@ extract_data_api()
 
 def extract_data_nosql_database():
     try:
-        connection = "mongodb+srv://local_business_user:local_business@cluster0.0j2dc.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
+        connection=os.getenv("LOCAL_BUSINESS_URI")
         client = pymongo.MongoClient(connection, tlsCAFile=certifi.where())  # Fixing tlsCAFile typo
         print("Connected to MongoDB")
     except Exception as e:
