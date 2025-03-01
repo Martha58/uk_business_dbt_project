@@ -36,7 +36,7 @@ if option:
                         f"**Rating**: {row['rating']} \n"
                         f"**Business**: {row['business']} \n")
             
-search = st.sidebar.text_input('What service are you looking for?')
+search = st.text_input('What service are you looking for?')
 
 if search:
     query = f"SELECT * FROM local_business WHERE business ILIKE '%{search}%'"
