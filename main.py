@@ -29,10 +29,7 @@ def extract_data_api():
 
         print(f"Query string: {querystring}")
 
-        headers = {
-            "x-rapidapi-key": "40ef23d086msh3ddec6a13f4e3c0p161262jsn4bc961e40785",
-            "x-rapidapi-host": "maps-data.p.rapidapi.com"
-        }
+        headers = os.getenv("LOCAL_BUSINESS_API_KEY"
 
         response = requests.get(url, headers=headers, params=querystring)
 
