@@ -4,6 +4,7 @@ import pandas as pd
 import pymongo
 import certifi
 import os
+import re 
 import time
 from pymongo import MongoClient
 
@@ -98,6 +99,9 @@ def extract_data_nosql_database():
                     'description': data.get('description', None),
                     'types': data.get('types', [])
                 })
+                for d in extracted_data:
+                    d['types'] = re.sub(r'\[|\]', '', str(d.get('types', '')))
+                    d['types'] = re.sub(r"\'|\'", '', str(d.get('types', '')))
     
     print(f"Extracted {len(extracted_data)} records")
     return extracted_data
