@@ -1,7 +1,7 @@
 import streamlit as st
 import duckdb
 
-conn = duckdb.connect('/workspace/local_business_data_extraction/database/local_business_db.duckdb')
+conn = duckdb.connect('database/local_business_db.duckdb')
 
 st.title('BUSINESSES IN UNITED KINGDOM')
 st.header('Get fast access to differnt services in the UK')
