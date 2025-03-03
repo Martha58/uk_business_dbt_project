@@ -93,3 +93,5 @@ This project successfully demonstrates an **end-to-end data engineering pipeline
 - **Streamlit** for visualization  
 
 This project serves as a **template for future data engineering workflows** and real-time business insights applications.
+
+Here is the link to the streamlit app - https://dbtproject.streamlit.app/
