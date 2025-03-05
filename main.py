@@ -29,7 +29,7 @@ def extract_data_api():
 
         print(f"Query string: {querystring}")
 
-        headers = os.getenv("LOCAL_BUSINESS_API_KEY"
+        headers = os.getenv("LOCAL_BUSINESS_API_KEY")
 
         response = requests.get(url, headers=headers, params=querystring)
 
